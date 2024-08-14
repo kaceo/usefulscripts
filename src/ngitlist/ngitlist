@@ -1,0 +1,17 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]
+then
+  echo Usage: $0 \{organisation\}
+else
+
+  #if [ 0 ]
+  #then
+  #  curl -s https://api.github.com/orgs/$1/repos?per_page=200 | jq '.[]|.name'
+  #else 
+    curl -s https://api.github.com/users/$1/repos?per_page=200 | jq '.[]|.name'
+  #fi
+
+fi
+
+

@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ $# -eq 0 ]
+then
+  echo Usage: $0 \{domain-name ... \}
+else
+  
+  for dname in $@
+  do
+    sol=$(whois $dname | grep -Po "Expiry Date: \K[0-9\-]*"  )
+    echo Registry: $dname expires $sol
+    #curl -sSiv $dname 1> /dev/null
+  done
+
+fi
+
