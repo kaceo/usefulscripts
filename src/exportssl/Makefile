@@ -20,6 +20,7 @@ kget:
 	make kfetch
 	make kpem
 	make kdate
+	make kjson
 
 
 kfetch:
@@ -37,6 +38,8 @@ kdate:
 	cat ./$(name).pem | openssl x509 -enddate -noout | cut -d "=" -f 2 >> ./$(name).lease
 
 
+kjson:
+	cat ./$(name).lease | ./me.awk > $(name).lease.json
 
 digacme:
 	@host -Tt txt _acme-challenge.$(name) localhost
